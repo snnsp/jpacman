@@ -58,20 +58,19 @@ public class MapParserTest {
     public void testParseMapWrong1() {
         PacmanConfigurationException thrown =
             Assertions.assertThrows(PacmanConfigurationException.class, () -> {
-            MockitoAnnotations.initMocks(this);
-            assertNotNull(boardFactory);
-            assertNotNull(levelFactory);
-            MapParser mapParser = new MapParser(levelFactory, boardFactory);
-            ArrayList<String> map = new ArrayList<>();
+                MockitoAnnotations.initMocks(this);
+                assertNotNull(boardFactory);
+                assertNotNull(levelFactory);
+                MapParser mapParser = new MapParser(levelFactory, boardFactory);
+                ArrayList<String> map = new ArrayList<>();
                 /*
                 Create a map with inconsistent size between
                 each row or contain invalid characters
                 */
-            map.add("############");
-            map.add("#P   B    G#");
-            map.add("############");
-
-            mapParser.parseMap(map);
+                map.add("############");
+                map.add("#P   B    G#");
+                map.add("############");
+                mapParser.parseMap(map);
         });
         Assertions.assertEquals("Invalid character at 5,1: B", thrown.getMessage());
     }
