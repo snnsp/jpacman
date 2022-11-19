@@ -40,9 +40,13 @@ public class MapParserTest {
         map.add("#P        G#");
         map.add("############");
         mapParser.parseMap(map);
+
+        final int createGroundCount = 10;
+        final int createWallCount = 26;
+
         Mockito.verify(levelFactory, Mockito.times(1)).createGhost();
-        Mockito.verify(boardFactory, Mockito.times(10)).createGround();
-        Mockito.verify(boardFactory, Mockito.times(26)).createWall();
+        Mockito.verify(boardFactory, Mockito.times(createGroundCount)).createGround();
+        Mockito.verify(boardFactory, Mockito.times(createWallCount)).createWall();
     }
 
 }
